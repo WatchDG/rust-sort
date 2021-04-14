@@ -49,3 +49,19 @@ fn main() {
     assert_eq!(data, [1, 2, 3, 4, 5]);
 }
 ```
+
+## merge sorts
+
+### merge sort
+
+```rust
+extern crate sort;
+
+use sort::merge_sort;
+
+fn main() {
+    let mut data = vec![5, 4, 3, 2, 1];
+    let result = merge_sort(&mut data);
+    assert_eq!(result, [1, 2, 3, 4, 5]);
+}
+```
