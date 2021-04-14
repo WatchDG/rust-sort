@@ -11,9 +11,9 @@ mod tests {
 }
 
 pub fn bubble_sort<T: PartialOrd>(v: &mut [T]) {
-    let l = v.len();
-    for j in 0..(l - 1) {
-        for i in 0..(l - j - 1) {
+    let l = v.len() - 1;
+    for j in 0..l {
+        for i in 0..(l - j) {
             if v[i] > v[i + 1] {
                 v.swap(i, i + 1);
             }
