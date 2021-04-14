@@ -1,5 +1,5 @@
 #[cfg(test)]
-mod test_selection_sort {
+mod test {
     use crate::selection_sort;
 
     #[test]

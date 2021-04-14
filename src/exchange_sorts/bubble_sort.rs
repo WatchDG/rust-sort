@@ -1,5 +1,5 @@
 #[cfg(test)]
-mod test_bubble_sort {
+mod test {
     use crate::bubble_sort;
 
     #[test]
