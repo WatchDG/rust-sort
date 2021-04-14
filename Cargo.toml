@@ -1,5 +1,11 @@
 [package]
 name = "sort"
 version = "0.2.0"
+description = "sort algorithms"
 authors = ["WatchDG <baranov@w3m.co>"]
+license = "MIT OR Apache-2.0"
+homepage = "https://github.com/WatchDG/rust-sort"
+documentation = "https://docs.rs/rust-sort"
+repository = "https://github.com/WatchDG/rust-sort"
+readme = "README.md"
 edition = "2018"
