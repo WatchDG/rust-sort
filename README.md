@@ -34,6 +34,20 @@ fn main() {
 }
 ```
 
+### heapsort
+
+```rust
+extern crate sort;
+
+use sort::heapsort;
+
+fn main() {
+    let mut data = vec![5, 4, 3, 2, 1];
+    heapsort(&mut data);
+    assert_eq!(data, [1, 2, 3, 4, 5]);
+}
+```
+
 ## insertion sorts
 
 ### insertion sort

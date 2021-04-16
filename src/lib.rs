@@ -6,4 +6,5 @@ pub mod selection_sorts;
 pub use exchange_sorts::bubble_sort;
 pub use insertion_sorts::insertion_sort;
 pub use merge_sorts::merge_sort;
+pub use selection_sorts::heapsort;
 pub use selection_sorts::selection_sort;
