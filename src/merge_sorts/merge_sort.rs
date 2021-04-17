@@ -17,14 +17,14 @@ pub fn merge_sort<T: PartialOrd + Clone>(v: &mut [T]) -> Vec<T> {
     }
     let m = (l as f64 / 2.).floor() as usize;
     let (lp, rp) = v.split_at_mut(m);
-    let mut lv = merge_sort(lp);
-    let mut rv = merge_sort(rp);
+    let lv = merge_sort(lp);
+    let rv = merge_sort(rp);
     let lvl = lv.len();
     let rvl = rv.len();
     let mut li = 0;
     let mut ri = 0;
     let mut new_v = Vec::with_capacity(l);
-    for _ in 0..l {
+    loop {
         if lv[li] > rv[ri] {
             new_v.push(rv[ri].clone());
             ri += 1;
@@ -33,11 +33,11 @@ pub fn merge_sort<T: PartialOrd + Clone>(v: &mut [T]) -> Vec<T> {
             li += 1;
         }
         if li == lvl {
-            new_v.extend_from_slice(rv.split_off(ri).as_slice());
+            new_v.extend_from_slice(&rv[ri..]);
             break;
         }
         if ri == rvl {
-            new_v.extend_from_slice(lv.split_off(li).as_slice());
+            new_v.extend_from_slice(&lv[li..]);
             break;
         }
     }

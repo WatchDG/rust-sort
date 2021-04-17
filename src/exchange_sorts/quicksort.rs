@@ -24,7 +24,55 @@ mod tests {
     }
 }
 
-fn get_pivot<T: PartialOrd + Clone>(v: &mut [T]) -> T {
+pub fn _exchange<T: PartialOrd>(
+    vec: &mut [T],
+    pivot: &T,
+    mut left_idx: usize,
+    mut right_idx: usize,
+) -> (usize, usize) {
+    let length = vec.len();
+    loop {
+        while left_idx < length && vec[left_idx] <= *pivot {
+            left_idx += 1;
+        }
+        while vec[right_idx] > *pivot {
+            right_idx -= 1;
+        }
+        if left_idx >= right_idx {
+            break;
+        }
+        vec.swap(left_idx, right_idx);
+        left_idx += 1;
+        right_idx -= 1;
+    }
+    (left_idx, right_idx + 1)
+}
+
+pub fn _move_pivots<T: PartialOrd>(
+    vec: &mut [T],
+    pivot: &T,
+    mut pivot_idx: usize,
+) -> (usize, usize) {
+    let mut left_idx = 0;
+    pivot_idx -= 1;
+    loop {
+        while pivot_idx > 0 && vec[pivot_idx] == *pivot {
+            pivot_idx -= 1;
+        }
+        while vec[left_idx] != *pivot {
+            left_idx += 1;
+        }
+        if left_idx >= pivot_idx {
+            break;
+        }
+        vec.swap(left_idx, pivot_idx);
+        left_idx += 1;
+        pivot_idx -= 1;
+    }
+    (left_idx, pivot_idx)
+}
+
+pub fn _pivot<T: PartialOrd + Clone>(v: &mut [T]) -> T {
     let l = v.len();
     let m = l / 2;
     if v[0] > v[m] {
@@ -46,48 +94,14 @@ pub fn quicksort<T: PartialOrd + Clone>(v: &mut [T]) {
         return;
     }
 
-    let pivot = get_pivot(v);
+    let pivot = _pivot(v);
 
     if l < 4 {
         return;
     }
 
-    let mut i = 0;
-    let mut j = l - 1;
-    loop {
-        while i < l && v[i] <= pivot {
-            i += 1;
-        }
-        while v[j] > pivot {
-            j -= 1;
-        }
-        if i >= j {
-            break;
-        }
-        v.swap(i, j);
-        i += 1;
-        j -= 1;
-    }
-
-    let mut m = 0;
-    let mut k = i - 1;
-    loop {
-        while k > 0 && v[k] == pivot {
-            k -= 1;
-        }
-        while v[m] != pivot {
-            m += 1;
-        }
-        if m >= k {
-            break;
-        }
-        v.swap(m, k);
-        m += 1;
-        k -= 1;
-    }
-
-    let (_, rv) = v.split_at_mut(j + 1);
-    quicksort(rv);
-    let (lv, _) = v.split_at_mut(k + 1);
-    quicksort(lv);
+    let (pivot_idx, right_idx) = _exchange(v, &pivot, 0, l - 1);
+    let (left_idx, _) = _move_pivots(v, &pivot, pivot_idx);
+    quicksort(&mut v[right_idx..]);
+    quicksort(&mut v[..left_idx]);
 }
