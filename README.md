@@ -93,3 +93,19 @@ fn main() {
     assert_eq!(result, [1, 2, 3, 4, 5]);
 }
 ```
+
+## hybrid sorts
+
+### introsort
+
+```rust
+extern crate sort;
+
+use sort::introsort;
+
+fn main() {
+    let mut data = vec![5, 4, 3, 2, 1];
+    introsort(&mut data);
+    assert_eq!(data, [1, 2, 3, 4, 5]);
+}
+```
