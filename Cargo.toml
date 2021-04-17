@@ -1,6 +1,6 @@
 [package]
 name = "sort"
-version = "0.8.1"
+version = "0.8.2"
 description = "sort algorithms"
 authors = ["WatchDG <baranov@w3m.co>"]
 license = "MIT OR Apache-2.0"

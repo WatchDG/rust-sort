@@ -24,13 +24,10 @@ mod tests {
     }
 }
 
-pub fn _exchange<T: PartialOrd>(
-    vec: &mut [T],
-    pivot: &T,
-    mut left_idx: usize,
-    mut right_idx: usize,
-) -> (usize, usize) {
+pub fn _exchange<T: PartialOrd>(vec: &mut [T], pivot: &T) -> (usize, usize) {
     let length = vec.len();
+    let mut left_idx = 0;
+    let mut right_idx = length - 1;
     loop {
         while left_idx < length && vec[left_idx] <= *pivot {
             left_idx += 1;
@@ -100,7 +97,7 @@ pub fn quicksort<T: PartialOrd + Clone>(v: &mut [T]) {
         return;
     }
 
-    let (pivot_idx, right_idx) = _exchange(v, &pivot, 0, l - 1);
+    let (pivot_idx, right_idx) = _exchange(v, &pivot);
     let (left_idx, _) = _move_pivots(v, &pivot, pivot_idx);
     quicksort(&mut v[right_idx..]);
     quicksort(&mut v[..left_idx]);

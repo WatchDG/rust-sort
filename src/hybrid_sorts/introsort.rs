@@ -1,7 +1,6 @@
+use crate::exchange_sorts::quicksort;
 use crate::heapsort;
 use crate::insertion_sort;
-
-use crate::exchange_sorts::quicksort;
 
 #[cfg(test)]
 mod tests {
@@ -43,7 +42,7 @@ fn _introsort<T: PartialOrd + Clone>(v: &mut [T], depth: usize) {
     }
 
     let pivot = quicksort::_pivot(v);
-    let (pivot_idx, right_idx) = quicksort::_exchange(v, &pivot, 0, l - 1);
+    let (pivot_idx, right_idx) = quicksort::_exchange(v, &pivot);
     let (left_idx, _) = quicksort::_move_pivots(v, &pivot, pivot_idx);
     _introsort(&mut v[right_idx..], depth - 1);
     _introsort(&mut v[..left_idx], depth - 1);
