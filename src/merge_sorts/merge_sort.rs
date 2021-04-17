@@ -41,5 +41,5 @@ pub fn merge_sort<T: PartialOrd + Clone>(v: &mut [T]) -> Vec<T> {
             break;
         }
     }
-    return new_v;
+    new_v
 }

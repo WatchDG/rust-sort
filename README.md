@@ -18,6 +18,20 @@ fn main() {
 }
 ```
 
+### quicksort
+
+```rust
+extern crate sort;
+
+use sort::quicksort;
+
+fn main() {
+    let mut data = vec![5, 4, 3, 2, 1];
+    quicksort(&mut data);
+    assert_eq!(data, [1, 2, 3, 4, 5]);
+}
+```
+
 ## selection sorts
 
 ### selection sort
