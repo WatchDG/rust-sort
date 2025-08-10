@@ -17,6 +17,9 @@ use std::cmp::Ordering;
 /// # Space Complexity
 /// * O(1) - In-place sorting algorithm
 ///
+/// # Stability
+/// * **Stable** - Equal elements maintain their relative order after sorting
+///
 /// # Examples
 /// ```
 /// use sort::bubble_sort;
@@ -55,6 +58,9 @@ pub fn bubble_sort<T: PartialOrd>(v: &mut [T]) {
 /// # Space Complexity
 /// * O(1) - In-place sorting algorithm
 ///
+/// # Stability
+/// * **Stable** - Equal elements maintain their relative order after sorting
+///
 /// # Examples
 /// ```
 /// use std::cmp::Ordering;
@@ -62,9 +68,13 @@ pub fn bubble_sort<T: PartialOrd>(v: &mut [T]) {
 ///
 /// let mut data = vec![5, 4, 3, 2, 1];
 /// bubble_sort_cmp(&mut data, |a, b| {
-///     if a > b { Ordering::Greater }
-///     else if a < b { Ordering::Less }
-///     else { Ordering::Equal }
+///     if a > b {
+///         Ordering::Greater
+///     } else if a < b {
+///         Ordering::Less
+///     } else {
+///         Ordering::Equal
+///     }
 /// });
 /// assert_eq!(data, [1, 2, 3, 4, 5]);
 /// ```
@@ -103,6 +113,9 @@ where
 ///
 /// # Space Complexity
 /// * O(1) - In-place sorting algorithm
+///
+/// # Stability
+/// * **Stable** - Equal elements maintain their relative order after sorting
 ///
 /// # Examples
 /// ```
@@ -150,6 +163,9 @@ pub fn bubble_sort_optimized<T: PartialOrd>(v: &mut [T]) {
 ///
 /// # Space Complexity
 /// * O(1) - In-place sorting algorithm
+///
+/// # Stability
+/// * **Stable** - Equal elements maintain their relative order after sorting
 ///
 /// # Examples
 /// ```
