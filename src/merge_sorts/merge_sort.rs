@@ -1,4 +1,3 @@
-
 pub fn merge_sort<T: PartialOrd + Clone>(v: &mut [T]) -> Vec<T> {
     let l = v.len();
     if l < 2 {

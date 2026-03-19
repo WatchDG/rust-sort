@@ -1,4 +1,3 @@
-
 #[inline]
 pub fn heapify<T: PartialOrd>(v: &mut [T], n: usize, mut i: usize) {
     let mut parent_idx = i;

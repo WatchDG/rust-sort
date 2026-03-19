@@ -1,4 +1,3 @@
-
 pub fn selection_sort<T: PartialOrd>(v: &mut [T]) {
     let l = v.len();
     for i in 0..(l - 1) {

@@ -4,10 +4,10 @@ pub mod insertion_sorts;
 pub mod merge_sorts;
 pub mod selection_sorts;
 
-pub use exchange_sorts::quicksort;
 pub use exchange_sorts::{
     bubble_sort, bubble_sort_cmp, bubble_sort_optimized, bubble_sort_optimized_cmp,
 };
+pub use exchange_sorts::{quicksort, quicksort_cmp};
 pub use hybrid_sorts::introsort;
 pub use insertion_sorts::{insertion_sort, insertion_sort_cmp};
 pub use merge_sorts::merge_sort;
